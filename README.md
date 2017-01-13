@@ -12,5 +12,5 @@ Copy `change-record-status.py` to `change-record-status.py`, fill in your API to
 
 ## Usage
 
-###
+### 1. Copy `change-record-status.py`
 
