@@ -1,10 +1,11 @@
 # py-fulcrum-tools
 
-Tools for interacting with the fulcrum app API using python. See http://www.fulcrumapp.com/developers/api/ for more info on the Fulcrum API.
+Tools for interacting with the fulcrum app API using python. See http://developer.fulcrumapp.com/api/intro/ for more info on the Fulcrum API. [Requests](http://docs.python-requests.org/en/latest/) takes care of our HTTP chatting, and is automatically installed when using the steps above.
 
 ## Tools
 
-* `change-record-status.py` - update the status of every record that is older than X days. This is ment to be scheduled outside pyhton using crontab.
+* ```python
+change-record-status.py``` - update the status of every record that is older than X days. This is ment to be scheduled outside pyhton using crontab.
 
 ## Setup
 
