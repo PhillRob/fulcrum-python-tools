@@ -8,9 +8,12 @@ Tools for interacting with the fulcrum app API using python. See http://www.fulc
 
 ## Setup
 
-Copy `change-record-status.py` to `change-record-status.py`, fill in your API token, and populate the form and creator UUID dictionaries.
+Run `pip install fulcrum` to install the fulcrum python library 
+Copy `change-record-status.py` to `change-record-status.py` and edit your `formId`, `apiToken`and `newlabel` `days`in `change-record-status.py` to suit you. You may change the field that is being update as well.
 
 ## Usage
 
-### 1. Copy `change-record-status.py`
+* 1. Copy `change-record-status.py` into your onto you linux machine
+* 2. Do `crontab -e` and add the path of the script and the frequency eg `minute hour day-of-month month day-of-week /path/to/change-record-status.py`
+
 
