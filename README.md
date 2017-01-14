@@ -13,7 +13,7 @@ Copy `change-record-status.py` to `change-record-status.py` and edit your `formI
 
 ## Usage
 
-* 1. Copy `change-record-status.py` into your onto you linux machine
+* 1. Copy `change-record-status.py` into your onto you linux machine 
 * 2. Do `crontab -e` and add the path of the script and the frequency eg `minute hour day-of-month month day-of-week /path/to/change-record-status.py`
 
 
