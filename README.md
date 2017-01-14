@@ -1,6 +1,6 @@
-# fulcrum-python-tools
+# Fulcrum Python Tools
 
-Tools for interacting with the fulcrum app API using python. See http://developer.fulcrumapp.com/api/intro/ for more info on the Fulcrum API. [Requests](http://docs.python-requests.org/en/latest/) takes care of our HTTP chatting, and is automatically installed when using the steps above.
+Tools for interacting with the fulcrum app API using python. See http://developer.fulcrumapp.com/api/intro/ for more info on the Fulcrum API. [Requests](http://docs.python-requests.org/en/latest/) takes care of our HTTP chatting, and is automatically installed when using the steps below.
 
 ## Tools
 
