@@ -4,13 +4,14 @@ Tools for interacting with the fulcrum app API using python. See http://develope
 
 ## Tools
 
-* `change-record-status.py` - update the status of every record that is older than 12 `days`. This is ment to be scheduled outside pyhton using crontab.
+* `change-record-status.py` - Update the status of every record that is older than 12 `days`. This is ment to be scheduled outside pyhton using crontab.
 * [`deleteRecords.py`](https://github.com/timstallmann/py-fulcrum-tools/blob/master/deleteRecords.py) - Bulk delete records belonging to a particular changeset.
 * `more-2-come`
 
 ## Setup
 
-Run `pip install fulcrum` to install the fulcrum python library 
+Run `pip install fulcrum` to install the fulcrum python library.
+
 Copy `change-record-status.py` to `change-record-status.py` and edit your `formId`, `apiToken`,`newlabel` and `days`in `change-record-status.py` to suit you. You may change the field that is being update as well.
 
 ## Usage
