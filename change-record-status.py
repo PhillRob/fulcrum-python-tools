@@ -1,6 +1,7 @@
 import json
-from datetime import datetime, timedelta
 import logging
+from datetime import datetime, timedelta
+
 import requests
 from fulcrum import Fulcrum
 
@@ -33,16 +34,14 @@ def getRecords(formId):
         return False
 
 
-# TODO: loop this every day or use cronjobs
+# TODO: loop this every day or use crontab
 
 # get the records
 records = getRecords(formId)['records']
 logging.debug(print('Today (', datetime.today(), ')', len(records), 'Records are older than', days, 'days'))
 if len(records) > 0:
     for record in records:
-        # print(record['status'])  this is just to test
         record['status'] = newlabel
-        # print(record['status'])  this is just to test
         updatedRecord = fulcrum.records.update(record['id'], record)
 else:
     logging.debug('No records to update')
