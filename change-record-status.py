@@ -7,10 +7,10 @@ from fulcrum import Fulcrum
 
 # TODO: get form list with id's
 # assign variables
-formId = 'a487599c-9adb-428a-a08b-cefe1d6138b9'  # get form ID from fulcrum web app
+formId = 'your form ID'  # get form ID from fulcrum web app
 days = 12
 timestamp = datetime.today() - timedelta(days=days)  # number of days as a delimiter
-apiToken = "5f833233ef8db48355952780de41c261927ffa1b5e2941870c0535588b58eaff1ebd61bca95aa918"  # magic api token
+apiToken = "your Api token"  # magic api token
 urlBase = 'https://api.fulcrumapp.com/api/v2/'
 fulcrum = Fulcrum(key=apiToken)
 newlabel = 'Design'  # status label is set to this value
