@@ -175,6 +175,3 @@ for record in Asset:
             print('not a os')
     else:
         print('OS name field empty')
-
-
-# TODO: update readme
