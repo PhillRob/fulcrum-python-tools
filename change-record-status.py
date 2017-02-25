@@ -33,9 +33,6 @@ def getRecords(formId):
     else:
         return False
 
-
-# TODO: loop this every day or use crontab
-
 # get the records
 records = getRecords(formId)['records']
 logging.debug(print('Today (', datetime.today(), ')', len(records), 'Records are older than', days, 'days'))
