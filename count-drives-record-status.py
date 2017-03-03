@@ -8,7 +8,7 @@ from fulcrum import Fulcrum
 formIdIssue = '52d56fc5-0a83-4912-a0aa-cbea3f8fc0ff'  # get form ID from fulcrum web app
 # formIDAsset = 'bfe42feb-d940-4086-8de6-057a0e5ad211'
 formIDAssetTest = 'a487599c-9adb-428a-a08b-cefe1d6138b9'
-apiToken = "2ef04ab67ab414b7ac6c7815235ace6f9cdf3ab79b9e0874beb053a9dfa9bb682d7bbd1a3117b68e"  # magic api token
+apiToken = ""  # magic api token
 urlBase = 'https://api.fulcrumapp.com/api/v2/'
 fulcrum = Fulcrum(key=apiToken)
 logging.basicConfig(filename='status-update.log', level=logging.DEBUG)
