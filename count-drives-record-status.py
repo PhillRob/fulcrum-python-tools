@@ -54,17 +54,18 @@ for record in Asset:
     print('record id', ''.join(record['id']), 'found')
     updateinfo = (''.join(ostoupdate[(ostoupdate['os'] == ''.join(record['id']))]['status']))
     if len(updateinfo) > 0:
-        print('Asset has issue information')
+        print('Asset has issue information.')
         if updateinfo == record['status']:
             print('Asset status', record['status'], 'matches', updateinfo, '. So no change is required. ')
         if updateinfo != record['status']:
             record['status'] = updateinfo
             print('Asset status', record['status'], 'will be updated to ', updateinfo)
+            updatedRecord = fulcrum.records.update(record['id'], record)
     else:
         if record['status'] != 'Not inspected':
             print('Asset does not have issues recorded and will be set to Not inspected')
-            # record['status'] = 'Not inspected'
+            record['status'] = 'Not inspected'
+            updatedRecord = fulcrum.records.update(record['id'], record)
         else:
             print('Asset does not have issues and is already set to not inspected. Nothing do to here. ')
-            record['status'] = updateinfo
-    updatedRecord = fulcrum.records.update(record['id'], record)
+            #    updatedRecord = fulcrum.records.update(record['id'], record)
