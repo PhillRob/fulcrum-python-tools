@@ -1,3 +1,0 @@
-INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): api.fulcrumapp.com
-DEBUG:requests.packages.urllib3.connectionpool:"GET /api/v2/records.json?updated_before=2017-01-02+02%3A01%3A03.169167&form_id=a487599c-9adb-428a-a08b-cefe1d6138b9 HTTP/1.1" 200 None
-DEBUG:root:None
