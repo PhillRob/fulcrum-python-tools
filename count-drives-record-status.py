@@ -66,5 +66,5 @@ for record in Asset:
             # record['status'] = 'Not inspected'
         else:
             print('Asset does not have issues and is already set to not inspected. Nothing do to here. ')
-            record['status'] = updateinfo['status']
+            record['status'] = updateinfo
     updatedRecord = fulcrum.records.update(record['id'], record)
