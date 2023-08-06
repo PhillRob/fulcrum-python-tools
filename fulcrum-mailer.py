@@ -12,9 +12,6 @@ from email.mime.text import MIMEText
 from fulcrum import Fulcrum
 
 # fulcrum vars
-apiToken = "magic api token"  # magic api token
-urlBase = 'https://api.fulcrumapp.com/api/v2/'
-
 with open("/credentials.json") as c:
 	credentials = json.load(c)
 
@@ -25,7 +22,7 @@ today = datetime.today()
 weeknumber = time.strftime("%U")
 
 # general smtp mailer vars
-fromaddr = credentials['from_address']  # replace w/ your sender adress
+fromaddr = credentials['from_address']
 ImgFileName = "logo.jpg"  # replace with your logo/image for signature
 img_data = open(ImgFileName, 'rb').read()
 
