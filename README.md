@@ -11,6 +11,7 @@ Tools for interacting with the fulcrum app API using python. See http://develope
 * `archive-complete-issue.py` changes the record's status based on the time delta between today and the last update date.
 * ~~`count-drives-record-status.py`- The records status is updated based on the records status of a 2nd app. It was intended to show the condition of parks and garden based on the number of complaints recieved.~~ 
 * `fulcrum-mailer.py`- Shows count data of records over a time and according to status. Intended as an informal activity summary for management. 
+* `gbif-validator.py` checks the species names in a fulcrum app against the [gbif](wwww.gbif.org) API
 * `more-2-come`
 
 ## Setup
