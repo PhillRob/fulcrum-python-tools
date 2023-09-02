@@ -38,8 +38,6 @@ sendtest = False
 recordsPerPage = 5000
 
 
-
-
 def TMO_TI_email(test):
 	fulcrum = Fulcrum(key=credentials['fulcrum_api'])
 
@@ -170,7 +168,7 @@ def TMO_TI_email(test):
 	msgRoot = MIMEMultipart('related')
 	msgRoot['From'] = fromaddr
 	msgRoot['To'] = ','.join(addr)
-	msgRoot['Subject'] = ("TMO Tree Inventory - Activity Summary Week " + weeknumber)
+	msgRoot['Subject'] = ("TMO Tree Inventory - Summary Week " + weeknumber)
 	msgRoot.preamble = 'This is a multi-part message in MIME format.'
 
 	# Encapsulate the plain and HTML versions of the message body in an
