@@ -196,18 +196,18 @@ def TMO_TI_email(test):
 
 	msgAlternative.attach(msgText)
 
-	with open(ImgFileName, 'rb') as fp:
-		msgImage = MIMEImage(fp.read(), _subtype="jpg")
-	msgImage.add_header('Content-ID', '<{}>'.format(ImgFileName))
-	msgRoot.attach(msgImage)
+	# with open(ImgFileName, 'rb') as fp:
+	# 	msgImage = MIMEImage(fp.read(), _subtype="jpg")
+	# msgImage.add_header('Content-ID', '<{}>'.format(ImgFileName))
+	# msgRoot.attach(msgImage)
 
-	# fp = open(ImgFileName, 'rb')
-	# msgImage = MIMEImage(fp.read(), _subtype="jpg")
-	# fp.close()
+	fp = open(ImgFileName, 'rb')
+	msgImage = MIMEImage(fp.read(), _subtype="jpg")
+	fp.close()
 
 	# Define the image's ID as referenced above
-	# msgImage.add_header('Content-ID', '<image1>')
-	# msgRoot.attach(msgImage)
+	msgImage.add_header('Content-ID', '<image1>')
+	msgRoot.attach(msgImage)
 
 	# For sending the mail, we have to convert the object to a string, and then use the same prodecure as above to send
 	# using the SMTP server.
