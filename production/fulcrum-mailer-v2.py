@@ -52,7 +52,7 @@ def TMO_TI_email(test):
 	# get number of pages
 	recordCount = fulcrum.forms.find(formid)['form']['record_count']
 	pages = math.ceil(recordCount / recordsPerPage)
-	pages=2
+
 	## get data per page
 	data = []
 	for p in range(1, pages + 1):
