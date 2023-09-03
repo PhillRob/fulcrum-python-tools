@@ -185,16 +185,25 @@ def TMO_TI_email(test):
 
 	msgText = MIMEText(
 		'<!doctype html><style>table {font-family: arial, sans-serif; border-collapse: collapse;width:400}td, th {border: 1px solid #dddddd; text-align: left; padding: 8px; }tr:nth-child(even) {background-color: #dddddd;}</style><html><head></head><body><br>Dear all,</br><p>attached the summary for week %s (%s to %s) of the TMO Tree Inventory. </p></b><p><h2>Total number of trees: %s</h2></b>	%sTotal trees recorded this week: %s <br>Total trees inspected and updated this week: %s </p><br><h2>Trees per project and week</h2><table width="400" border="0"><col align="left"><col align="left"><col align="left"><col align="left"><tbody><tr>      <th scope="row">Project</th>      <td>Created</td>      <td>Updated</td>  <td>Total</td>   </tr>  %s  </tbody></table>	<br><br> This email is sent automatically on a weekly basis. <br><br> Please contact <a href="mailto:mailer@bp-la.com" target="new">mailer@bp-la.com</a> for any feedback and comments. <br><br>	Kind regards <br>BPLA  <br><a href="http://www.bp-la.com" target="_blank">www.bp-la.com</a><br><br><img src="cid:image1"></body>' % (
-			weeknumber, weektimestamp.strftime('%d.%m.%Y'), today.strftime('%d.%m.%Y'), totalcount, totaltext,
+			weeknumber,
+			weektimestamp.strftime('%d.%m.%Y'),
+			today.strftime('%d.%m.%Y'),
+			totalcount,
+			totaltext,
 			weekcount,
-			weekcountupdated, dptext), 'html')
+			weekcountupdated,
+			dptext), 'html')
 
 	msgAlternative.attach(msgText)
 
-	# This example assumes the image is in the current directory
-	fp = open(ImgFileName, 'rb')
-	msgImage = MIMEImage(fp.read())#, _subtype="jpg")
-	fp.close()
+	with open(ImgFileName, 'rb') as fp:
+		msgImage = MIMEImage(fp.read())
+	msgImage.add_header('Content-ID', '<{}>'.format(ImgFileName))
+	msgRoot.attach(msgImage)
+
+	# fp = open(ImgFileName, 'rb')
+	# msgImage = MIMEImage(fp.read(), _subtype="jpg")
+	# fp.close()
 
 	# Define the image's ID as referenced above
 	msgImage.add_header('Content-ID', '<image1>')
