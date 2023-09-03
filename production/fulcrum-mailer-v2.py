@@ -31,7 +31,7 @@ weeknumber = time.strftime("%U")
 
 # general smtp mailer vars
 fromaddr = credentials['from_address']
-ImgFileName = "bpla-systems.jpg"
+ImgFileName = "systems-signature-logo.jpg"
 # img_data = open(ImgFileName, 'rb').read()
 sendtest = True
 recordsPerPage = 5000
@@ -52,7 +52,7 @@ def TMO_TI_email(test):
 	# get number of pages
 	recordCount = fulcrum.forms.find(formid)['form']['record_count']
 	pages = math.ceil(recordCount / recordsPerPage)
-
+	pages=2
 	## get data per page
 	data = []
 	for p in range(1, pages + 1):
