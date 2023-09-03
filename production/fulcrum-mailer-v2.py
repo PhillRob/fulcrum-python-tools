@@ -192,7 +192,7 @@ def TMO_TI_email(test):
 
 	# This example assumes the image is in the current directory
 	fp = open(ImgFileName, 'rb')
-	msgImage = MIMEImage(fp.read())
+	msgImage = MIMEImage(fp.read(), _subtype="png")
 	fp.close()
 
 	# Define the image's ID as referenced above
