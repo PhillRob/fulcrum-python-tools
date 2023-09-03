@@ -33,7 +33,7 @@ weeknumber = time.strftime("%U")
 fromaddr = credentials['from_address']
 ImgFileName = "systems-signature-logo.jpg"
 # img_data = open(ImgFileName, 'rb').read()
-sendtest = True
+sendtest = False
 recordsPerPage = 5000
 
 
