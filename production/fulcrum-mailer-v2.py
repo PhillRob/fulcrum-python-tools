@@ -206,8 +206,8 @@ def TMO_TI_email(test):
 	# fp.close()
 
 	# Define the image's ID as referenced above
-	msgImage.add_header('Content-ID', '<image1>')
-	msgRoot.attach(msgImage)
+	# msgImage.add_header('Content-ID', '<image1>')
+	# msgRoot.attach(msgImage)
 
 	# For sending the mail, we have to convert the object to a string, and then use the same prodecure as above to send
 	# using the SMTP server.
