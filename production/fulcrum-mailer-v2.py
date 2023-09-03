@@ -23,7 +23,7 @@ logging.basicConfig(filename='production/fulcrum-mailer-v2.log', level=logging.D
 
 # dates
 weektimestamp = datetime.today() - timedelta(days=7)  # number of days as a delimiter
-#monthtimestamp = datetime.today() - timedelta(days=30)  # number of days as a delimiter
+# monthtimestamp = datetime.today() - timedelta(days=30)  # number of days as a delimiter
 today = datetime.today()
 weeknumber = time.strftime("%U")
 # no_timeout = Timeout(connect=None, read=None)
@@ -31,17 +31,18 @@ weeknumber = time.strftime("%U")
 
 # general smtp mailer vars
 fromaddr = credentials['from_address']
-ImgFileName = "bpla-systems.png"
-img_data = open(ImgFileName, 'rb').read()
+ImgFileName = "bpla-systems.jpg"
+# img_data = open(ImgFileName, 'rb').read()
 sendtest = True
 recordsPerPage = 5000
+
 
 def TMO_TI_email(test):
 	fulcrum = Fulcrum(key=credentials['fulcrum_api'])
 
 	# recipients list
 	if test:
-		addr = ['robeck@bp-la.com', 'philipp.robeck@gmail.com', 'phill@gmx.li']
+		addr = ['robeck@bp-la.com', 'philipp.robeck@gmail.com']
 	else:
 		addr = ['tmo@bp-la.com']
 
@@ -192,7 +193,7 @@ def TMO_TI_email(test):
 
 	# This example assumes the image is in the current directory
 	fp = open(ImgFileName, 'rb')
-	msgImage = MIMEImage(fp.read(), _subtype="png")
+	msgImage = MIMEImage(fp.read(), _subtype="jpg")
 	fp.close()
 
 	# Define the image's ID as referenced above
@@ -208,5 +209,6 @@ def TMO_TI_email(test):
 	server.sendmail(fromaddr, addr, msgRoot.as_string())
 	server.quit()
 	gc.collect()
+
 
 TMO_TI_email(test=sendtest)
