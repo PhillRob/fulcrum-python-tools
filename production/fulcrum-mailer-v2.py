@@ -2,10 +2,10 @@
 # -*- coding: UTF-8 -*-
 
 # # # imports
-import gc, json
+import gc
+import json
 import logging
 import math
-import os
 import smtplib
 import time
 from collections import Counter
@@ -13,7 +13,6 @@ from datetime import datetime, timedelta
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
 from fulcrum import Fulcrum
 
 # fulcrum vars
@@ -24,7 +23,7 @@ logging.basicConfig(filename='production/fulcrum-mailer-v2.log', level=logging.D
 
 # dates
 weektimestamp = datetime.today() - timedelta(days=7)  # number of days as a delimiter
-monthtimestamp = datetime.today() - timedelta(days=30)  # number of days as a delimiter
+#monthtimestamp = datetime.today() - timedelta(days=30)  # number of days as a delimiter
 today = datetime.today()
 weeknumber = time.strftime("%U")
 # no_timeout = Timeout(connect=None, read=None)
@@ -37,7 +36,6 @@ img_data = open(ImgFileName, 'rb').read()
 sendtest = True
 recordsPerPage = 5000
 
-
 def TMO_TI_email(test):
 	fulcrum = Fulcrum(key=credentials['fulcrum_api'])
 
@@ -47,7 +45,6 @@ def TMO_TI_email(test):
 	else:
 		addr = ['tmo@bp-la.com']
 
-	# WS Construction Management
 	# get project vars
 	formid = credentials['TMO_TI_form']
 
@@ -59,7 +56,7 @@ def TMO_TI_email(test):
 	data = []
 	for p in range(1, pages + 1):
 		dataPage = fulcrum.records.search(
-			url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': 7000})['records']
+			url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': recordsPerPage})['records']
 		data.extend(dataPage)
 
 	# get unique project IDs in a list
