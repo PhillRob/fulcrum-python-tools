@@ -176,7 +176,7 @@ def TMO_TI_email(test):
 
 	# Next, we attach the body of the email to the MIME message:
 	msgText = MIMEText(
-		"Dear all, \r\n attached the summary for week %s (%s to %s) of the TMO Tree Inventory. \r\n \r\n Total number of trees: %s  \r\n \r\n %s \r\n \r\n Trees recorded this week: %s \r\n Trees inspected and updated this week: %s \r\n \r\n Trees per project \r\n %s \r\n \r\n This email is sent automatically on a weekly basis. \r\n \r\n Please contact mailer@bp-la.com for any feedback and comments. \r\n \r\n Kind regards \r\n BPLA \r\n www.bp-la.com \r\n \r\n" % (
+		"Dear all, \r\n attached the summary for week %s (%s to %s) of the TMO Tree Inventory. \r\n \r\n Total number of trees: %s  \r\n \r\n %s \r\n \r\n Trees recorded this week: %s \r\n Trees inspected and updated this week: %s \r\n \r\n Trees per project \r\n %s \r\n \r\n This email is sent automatically on a weekly basis. \r\n \r\n Please contact mailer@bp-la.com for any feedback and comments. \r\n \r\n Kind regards \r\n bödeker \r\n www.bp-la.com \r\n \r\n" % (
 			weeknumber, weektimestamp.strftime('%d.%m.%Y'), today.strftime('%d.%m.%Y'), totalcount, totaltext,
 			weekcount,
 			weekcountupdated, dptextplain))
@@ -184,7 +184,7 @@ def TMO_TI_email(test):
 	msgAlternative.attach(msgText)
 
 	msgText = MIMEText(
-		'<!doctype html><style>table {font-family: arial, sans-serif; border-collapse: collapse;width:400}td, th {border: 1px solid #dddddd; text-align: left; padding: 8px; }tr:nth-child(even) {background-color: #dddddd;}</style><html><head></head><body><br>Dear all,</br><p>attached the summary for week %s (%s to %s) of the TMO Tree Inventory. </p></b><p><h2>Total number of trees: %s</h2></b>	%sTotal trees recorded this week: %s <br>Total trees inspected and updated this week: %s </p><br><h2>Trees per project and week</h2><table width="400" border="0"><col align="left"><col align="left"><col align="left"><col align="left"><tbody><tr>      <th scope="row">Project</th>      <td>Created</td>      <td>Updated</td>  <td>Total</td>   </tr>  %s  </tbody></table>	<br><br> This email is sent automatically on a weekly basis. <br><br> Please contact <a href="mailto:mailer@bp-la.com" target="new">mailer@bp-la.com</a> for any feedback and comments. <br><br>	Kind regards <br>BPLA  <br><a href="http://www.bp-la.com" target="_blank">www.bp-la.com</a><br><br><img src="cid:image1"></body>' % (
+		'<!doctype html><style>table {font-family: arial, sans-serif; border-collapse: collapse;width:400}td, th {border: 1px solid #dddddd; text-align: left; padding: 8px; }tr:nth-child(even) {background-color: #dddddd;}</style><html><head></head><body><br>Dear all,</br><p>attached the summary for week %s (%s to %s) of the TMO Tree Inventory. </p></b><p><h2>Total number of trees: %s</h2></b>	%sTotal trees recorded this week: %s <br>Total trees inspected and updated this week: %s </p><br><h2>Trees per project and week</h2><table width="400" border="0"><col align="left"><col align="left"><col align="left"><col align="left"><tbody><tr>      <th scope="row">Project</th>      <td>Created</td>      <td>Updated</td>  <td>Total</td>   </tr>  %s  </tbody></table>	<br><br> This email is sent automatically on a weekly basis. <br><br> Please contact <a href="mailto:mailer@bp-la.com" target="new">mailer@bp-la.com</a> for any feedback and comments. <br><br>	Kind regards <br> bödeker  <br><a href="http://www.bp-la.com" target="_blank">www.bp-la.com</a><br><br><img src="cid:image1"></body>' % (
 			weeknumber,
 			weektimestamp.strftime('%d.%m.%Y'),
 			today.strftime('%d.%m.%Y'),
