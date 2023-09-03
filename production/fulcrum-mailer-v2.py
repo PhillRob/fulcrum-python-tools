@@ -17,10 +17,10 @@ from email.mime.text import MIMEText
 from fulcrum import Fulcrum
 
 # fulcrum vars
-with open("../credentials.json") as c:
+with open("production/credentials.json") as c:
 	credentials = json.load(c)
 
-logging.basicConfig(filename='../fulcrum-mailer.log', level=logging.DEBUG)
+logging.basicConfig(filename='production/fulcrum-mailer-v2.log', level=logging.DEBUG)
 
 # dates
 weektimestamp = datetime.today() - timedelta(days=7)  # number of days as a delimiter
@@ -34,7 +34,7 @@ weeknumber = time.strftime("%U")
 fromaddr = credentials['from_address']
 ImgFileName = "bpla-systems.png"
 img_data = open(ImgFileName, 'rb').read()
-sendtest = False
+sendtest = True
 recordsPerPage = 5000
 
 
@@ -59,7 +59,7 @@ def TMO_TI_email(test):
 	data = []
 	for p in range(1, pages + 1):
 		dataPage = fulcrum.records.search(
-			url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': 5000})['records']
+			url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': 7000})['records']
 		data.extend(dataPage)
 
 	# get unique project IDs in a list
