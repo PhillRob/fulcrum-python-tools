@@ -197,7 +197,7 @@ def TMO_TI_email(test):
 	msgAlternative.attach(msgText)
 
 	with open(ImgFileName, 'rb') as fp:
-		msgImage = MIMEImage(fp.read())
+		msgImage = MIMEImage(fp.read(), _subtype="jpg")
 	msgImage.add_header('Content-ID', '<{}>'.format(ImgFileName))
 	msgRoot.attach(msgImage)
 
