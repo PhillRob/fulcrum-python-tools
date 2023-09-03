@@ -1,5 +1,7 @@
 # imports
-import logging, json, math
+import json
+import logging
+import math
 import os
 import smtplib
 import time
@@ -8,7 +10,6 @@ from datetime import datetime, timedelta
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
 from fulcrum import Fulcrum
 
 # fulcrum vars
@@ -30,7 +31,7 @@ img_data = open(ImgFileName, 'rb').read()
 formID = "formID"  # replace with your from ID
 
 # recipients list
-WHTMaddr = credentials['to_address']
+addr = credentials['to_address']
 
 # get records
 ## get number of pages
@@ -42,16 +43,11 @@ recordCount = fulcrum.forms.find(formID)['form']['record_count']
 pages = math.ceil(recordCount / recordsPerPage)
 
 ## get data per page
-if pages > 1:
-	for p in range(1, pages + 1):
-		dataPage = fulcrum.records.search(url_params={'form_id': formID, 'page': p, 'per_page': recordsPerPage})[
-			'records']
-		if p > 1:
-			data.extend(dataPage)
-		else:
-			data = dataPage
-else:
-	data = fulcrum.records.search(url_params={'form_id': formID, 'page': 1, 'per_page': recordsPerPage})['records']
+data = []
+for p in range(1, pages + 1):
+	dataPage = fulcrum.records.search(
+		url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': recordsPerPage})['records']
+	data.extend(dataPage)
 
 # total count
 ## this just counts records according to the status
@@ -88,7 +84,7 @@ weekcountupdated = sum(statusweekcountupdated.values())
 # mail vars
 msg = MIMEMultipart()
 msg['From'] = fromaddr
-msg['To'] = ','.join(WHTMaddr)
+msg['To'] = ','.join(addr)
 msg['Subject'] = ("Activity Summary Week " + weeknumber)
 
 # Next, we attach the body of the email to the MIME message:
@@ -96,6 +92,7 @@ body = (
 		"Dear all, \r\n attached the activity summary for week %s (%s to %s) .   \r\n \r\n Total number of records: %s  \r\n \r\n Records with status A: %s \r\n  Records with status B: %s \r\n \r\n \r\n Record created this week: %s \r\n Records updated this week: %s \r\n \r\n This email is sent automatically on a weekly basis. \r\n \r\n Kind regards." % (
 	weeknumber, weektimestamp.strftime('%d.%m.%Y'), today.strftime('%d.%m.%Y'), totalcount, statustotalcount['2'],
 	statustotalcount['1'], statustotalcount['4'], statustotalcount['3'], weekcount, weekcountupdated))
+
 # 1, 2, etc. reflect your status labels. prob. need to adjust those.
 msg.attach(MIMEText(body, 'plain'))
 image = MIMEImage(img_data, name=os.path.basename(ImgFileName))
@@ -108,5 +105,5 @@ server.starttls()
 server.ehlo()
 server.login(fromaddr, credentials["email_pwd"])  # add password
 text = msg.as_string()
-server.sendmail(fromaddr, WHTMaddr, text)
+server.sendmail(fromaddr, addr, text)
 server.quit()
