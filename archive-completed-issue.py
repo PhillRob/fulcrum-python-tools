@@ -18,10 +18,14 @@ logging.basicConfig(filename='issue-status-update.log', level=logging.DEBUG)
 issueTimestamp = datetime.today() - timedelta(days=15)  # number of days as a delimiter
 
 print('get issue data')
-Issue = fulcrum.records.search(url_params={'form_id': formIdIssue})['records']
+data = []
+for p in range(1, pages + 1):
+	dataPage = fulcrum.records.search(
+        url_params={'form_id': credentials['TMO_TI_form'], 'page': p, 'per_page': 5000})['records']
+	data.extend(dataPage)
 
 print('create issue dataframe for roads')
-for record in Issue:
+for record in data:
 	if record['status'] == "Archived":
 		print("already archived")
 	else:
